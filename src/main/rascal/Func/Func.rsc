@@ -4,7 +4,9 @@ lexical Ident = [a-zA-Z][a-ZA-Z0-9]* !>> [a-zA-Z0-9];
 lexical Natural = [0-9]+ !>> [0-9];
 lexical LAYOUT = [\t-\n\r\ ];
 layout LAYOUTLIST = LAYOUT* !>> [\t-\n\r\ ];
+
 start syntax Prog = prog: Func*;
+
 syntax Func = func: Ident name "(" {Ident ","}* ")" "=" Exp;
 syntax Exp = 
     let: "let" {Binding ","}* "in" Exp "end"
